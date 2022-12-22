@@ -157,8 +157,8 @@ class AnotherWindow(QWidget):
 			
 			Ui_MainWindow.testthread.start()
 			
-			msg = QMessageBox()
-			msg.setIcon(QMessageBox.Information)
+			msg = QtWidgets.QMessageBox()
+			msg.setIcon(QtWidgets.QMessageBox.Information)
 			msg.setText("Connection")
 			msg.setInformativeText('you are connected')
 			msg.setWindowTitle("Connection")
@@ -170,8 +170,8 @@ class AnotherWindow(QWidget):
 			Ui_MainWindow.Start_TR.setEnabled(True)
 			self.hide()
 		except :
-			msg = QMessageBox()
-			msg.setIcon(QMessageBox.Critical)
+			msg = QtWidgets.QMessageBox()
+			msg.setIcon(QtWidgets.QMessageBox.Critical)
 			msg.setText("Error")
 			msg.setInformativeText('Unablr to connect to API')
 			msg.setWindowTitle("Error")
@@ -314,8 +314,10 @@ class Ui_MainWindow(object):
 			self.window2.hide()
 		else:
 			self.window2.show()
+            
 	def connect(self):
 		connect(self)
+        
 	def Add_func(self):
 		Add_func(self)
 	
@@ -372,11 +374,11 @@ class Ui_MainWindow(object):
 		self.tab_2 = QtWidgets.QWidget()
 		self.Tab_2_Layout = QtWidgets.QHBoxLayout(self.tab_2)
 		self.tab_2.setAutoFillBackground(True)
+        
 		palette = self.tab_2.palette()
 		palette.setColor(self.tab_2.backgroundRole(), QColor(45, 45, 45, 255))
 		self.tab_2.setPalette(palette)
 		self.tabWidget.addTab(self.tab_2, "")
-
 
 		self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab)," Analyse")
 		self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), "Profile Patient")
@@ -392,9 +394,6 @@ class Ui_MainWindow(object):
 		self.vbox =  QtWidgets.QVBoxLayout()
 		self.vbox.addWidget(self.SP02View)
 		self.SP02GroupBox.setLayout(self.vbox)
-
-
-		
 
 		self.Body_positionGroupBox = QtWidgets.QGroupBox("Body_position",self.tab)
 		self.Body_positionGroupBox.setObjectName("Body_position")
@@ -538,9 +537,9 @@ class Ui_MainWindow(object):
 class MyWindow( QtWidgets.QWidget):
 	testthread = Ui_MainWindow.testthread
 	def closeEvent(self,event):
-		result = QtGui.QMessageBox.question(self,"Confirm Exit...","Are you sure you want to exit ?",QtGui.QMessageBox.Yes| QtGui.QMessageBox.No)
+		result = QtWidgets.QMessageBox.question(self,"Confirm Exit...","Are you sure you want to exit ?",QtWidgets.QMessageBox.Yes| QtWidgets.QMessageBox.No)
 		event.ignore()
-		if result == QtGui.QMessageBox.Yes:
+		if result == QtWidgets.QMessageBox.Yes:
 			if(MyWindow.testthread.connecte== True):
 				try:
 					MyWindow.testthread.join()
@@ -559,6 +558,6 @@ if __name__ == "__main__":
        app.setStyleSheet('QMainWindow{background-color: darkgray;border: 1px solid black;}')
        MainWindow = MyWindow()
        ui = Ui_MainWindow()
-       ui.setupUi(MainWindow,size.width()-size.width()*0.015, size.height()-size.height()*0.08)
+       ui.setupUi(MainWindow,size.width()-int(size.width()*0.015), size.height()-int(size.height()*0.08))
        sys.exit(app.exec_())
 

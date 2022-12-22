@@ -460,47 +460,4 @@ def update_database(member_id,ts_start,ts_end,bearer):
 	read_data(csv_column, sensor_id, member_id, ts_start, ts_end, limit, cursor, order, bearer)
 	sensor_id="spo2_ble_bpm"
 	read_data(csv_column, sensor_id, member_id, ts_start, ts_end, limit, cursor, order, bearer)
-'''
-bearer ='Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJnd19pZCI6IltNU10gZWxldmU0LmVzbWVAaG90bWFpbC5jb20gW2RldmVsb3Blcl0gKG15c2lnbmFscy5kZXZlbG9wZXIuYmFzaWMpIiwiZ3dfcG9sIjoiNTdkZmExMTg1MWFmNzkwMzAwMDAwMDAyIiwiaWF0IjoxNjAxOTk5MDM1LCJuYmYiOjE2MDE5OTkwMzUsInN1YiI6MTUxMCwiaXNzIjoiaHR0cHM6XC9cL2Nsb3VkLmxpYmVsaXVtLmNvbVwvbXlzaWduYWxzXC9hcGlcL2F1dGhcL2xvZ2luIiwiZXhwIjoxNjAyMDg1NTU1LCJqdGkiOiJiMjI2YzI5Njk3YTExNmQ1MWI4MTc3YWQwMjg5MjczNyJ9.TOKY3IV59jvq5Jyp-XQxaExTCaFw2YdCExmJAJ0kRkU'
-csv_column = ['id','value','ts','sensor_id','member_id']
-csv_file = 'lib_data_temp_2.csv'	
-read_all_profil(csv_column, bearer)
-member_id = get_profil()
-print(member_id)
-ts_start="2020-01-22 16:23:16+00"
-ts_end="2021-01-22 16:23:16+00"
-pos = []
-blood_ble_dias = []
-blood_ble_syst = []
-blood_ble_bpm = []
-spo2_ble_oxy = []
-spo2_ble_bpm = []
-for id in member_id:
-	print(id)
-	
-	#update_database(id,ts_start,ts_end)
-	
-pos ,time_pos = get_body_pos(ts_start, ts_end, member_id[0])
-blood_ble_dias,blood_ble_syst,blood_ble_bpm ,time_blood= get_blood(ts_start, ts_end, member_id[0])
-spo2_ble_oxy,spo2_ble_bpm ,time_spo2 = get_spo2(ts_start, ts_end, member_id[0])
 
-
-plt.plot(time_pos,pos)
-plt.xticks(pos, time_pos, rotation=-0)
-# add a subplot with no frame
-
-plt.show()
-plt.plot(time_blood,blood_ble_dias,'r',time_blood,blood_ble_syst,'b',time_blood,blood_ble_bpm,'g')
-plt.xticks(blood_ble_dias, time_blood, rotation=-40)
-# add a polar subplot
-
-plt.show()
-plt.plot(time_spo2,spo2_ble_oxy,'r',time_spo2,spo2_ble_bpm,'b')
-plt.xticks( time_spo2, rotation=-90)
-
-
-plt.show()
-'''
-full_name = "jonas leite"
-name,surname = re.findall(r'\S+', full_name)
-print(name,surname)
